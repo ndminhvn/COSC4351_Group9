@@ -1,0 +1,25 @@
+# dependencies
+/node_modules
+
+# environments var
+.env
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+start-server.sh
+
+.vscode/
+keys.json
+gsheet.json
+.history/
+logs/
+build/
+dist/
+coverage/
+grafana/grafana.ini
+newrelic_agent.log
+# stryker temp files
+.stryker-tmp
+reports/
