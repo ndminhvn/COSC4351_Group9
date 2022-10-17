@@ -9,7 +9,7 @@
 
 ## Description
 A reservation system for a restaurant.
-> [Project detail document](/doc/Project.docx)
+> [Project detail document](/doc/Project.pdf)
 ## Technology Stack
 - Frontend: [ReactJS](https://reactjs.org/)
 - Backend: [ExpressJS](https://expressjs.com/)
