@@ -15,9 +15,9 @@ A reservation system for a restaurant.
 - Backend: [ExpressJS](https://expressjs.com/)
 - Database: [MongoDB](https://www.mongodb.com/)
 - Libraries:
-  - Styling: [Bootstrap](https://github.com/react-bootstrap/react-bootstrap)
+  - Styling: [Bootstrap](https://github.com/twbs/bootstrap)
   - Request: [Axios](https://github.com/axios/axios)
-  - 
+
 ## Demo
 ## Installation
 - Requirements:
@@ -29,8 +29,8 @@ A reservation system for a restaurant.
 - Install:
   - Clone this repository: `git clone https://github.com/ndminhvn/COSC4351_Group9`
   - Frontend:
-    - Go to client folder: `cd client`
-    - Install dependencies: `npm install`
+    <!-- - Go to client folder: `cd client`
+    - Install dependencies: `npm install` -->
   - Backend:
     - Go to server folder: `cd server`
     - Install dependencies: `npm install`
