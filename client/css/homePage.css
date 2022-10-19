@@ -27,12 +27,14 @@ h1 {
 .btn-group {
     /* border: 1px solid blue; */
     margin-top: 75px;
+    box-shadow: none !important;
 }
 
 #reserve-btn {
     background-color: rgb(234, 175, 87);
     border: none;
     border-radius: 12px;
+    text-transform:none !important;
     font-family: 'Akaya Kanadaka';
     color: rgb(152, 71, 9);
     font-weight: bold;
@@ -76,6 +78,7 @@ span {
     /* border: 3px solid green; */
     border: none;
     font-family: 'Akaya Kanadaka';
+    text-transform:none !important;
     color:rgb(152, 71, 9);
     font-weight: bold;
     border-radius: 12px;
