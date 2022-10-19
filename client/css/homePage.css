@@ -1,0 +1,91 @@
+#home {
+    margin: 10% auto;
+    width: 70%;
+    /* border: 3px solid green; */
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+} 
+
+h1 {
+    /* font-family: "acta-display", serif; */
+    font-family: "Great Vibes", cursive;
+    font-weight: bold;
+    font-size: 113.5px;
+    /* font-size: 716%; */
+    letter-spacing: 0.5px;
+    color: rgb(57, 93, 87);
+    line-height: 100px;
+    text-shadow: 0 3.5px 1px rgb(229, 166, 31);
+
+    @media screen and (min-width: 800px) {
+        font-size: 110px;
+        line-height: 100px;
+    }
+}
+
+.btn-group {
+    /* border: 1px solid blue; */
+    margin-top: 75px;
+}
+
+#reserve-btn {
+    background-color: rgb(234, 175, 87);
+    border: none;
+    border-radius: 12px;
+    font-family: 'Akaya Kanadaka';
+    color: rgb(152, 71, 9);
+    font-weight: bold;
+    padding: 2.5px 12.5px;
+    margin-bottom: 6%;
+    font-size: 38px;
+    cursor: pointer;
+}
+
+#reserve-btn:hover {
+    background-color: rgb(152, 71, 9);
+	color: rgb(234, 175, 87);
+}
+
+p {
+    font-size: 23.5px;
+    font-weight: bold;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(57, 93, 87);
+    text-shadow: 0 2px 1px rgb(229, 166, 31);
+}
+
+/* @media screen and (min-width: 380px) {
+    p {
+        color:brown;
+    }
+}
+@media screen and (max-width: 700px) {
+    p {
+        color: rgb(57, 93, 87);
+    }
+} */
+
+span {
+    /* border: 1px solid blue; */
+    margin-top: -10px;
+}
+
+#check-btn {
+    background-color: rgb(234, 175, 87);
+    /* border: 3px solid green; */
+    border: none;
+    font-family: 'Akaya Kanadaka';
+    color:rgb(152, 71, 9);
+    font-weight: bold;
+    border-radius: 12px;
+    padding: 2.5px 12.5px;
+    margin-top: -5%;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#check-btn:hover {
+    background-color: rgb(152, 71, 9);
+	color: rgb(234, 175, 87);
+}
