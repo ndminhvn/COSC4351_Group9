@@ -9,12 +9,9 @@ let reservationSchema = new mongoose.Schema({
         type: int,
         required: true
     },
-    Customer:{
-        
-    }
+    Table: [int],
+    
 });
 
-let Reservation = mongoose.model("Reservation", reservationSchema)
+module.exports = mongoose.model('Reservation', reservationSchema);
 
-module.exports.model = Reservation;
-module.exports.Schema = reservationSchema;
