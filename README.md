@@ -34,6 +34,6 @@ A reservation system for a restaurant.
   - Backend:
     - Go to server folder: `cd server`
     - Install dependencies: `npm install`
-    - Start server: `npm run viewer`
+    - Start server: `npm run server`
 
 ## Project Structure
