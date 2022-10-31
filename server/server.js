@@ -1,6 +1,6 @@
-const express = require("express")
-const app = express()
-const mongoose = require("mongoose")
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
 
 
 
@@ -11,15 +11,9 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((err) => console.log(err));
 
 //Routes
-const userRoute = require("./routes/user")
-app.use("/user", userRoute)
-//use register.js file to handle
-//endpoints that start with /register
+app.use(require("./routes"));
+app.use(require("./routes/user"))
 
-
-
-app.get('/', (req,res) =>{
-    res.send("Home Page")
-})
-
-app.listen(3000);
+app.listen(3000, () =>{
+    console.log("Server running on port 3000");
+});
