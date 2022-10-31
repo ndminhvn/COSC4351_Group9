@@ -1,3 +1,13 @@
+body {
+    background-image: url('../assets/background.png');
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 #home {
     margin: 10% auto;
     width: 70%;
@@ -27,12 +37,14 @@ h1 {
 .btn-group {
     /* border: 1px solid blue; */
     margin-top: 75px;
+    box-shadow: none !important;
 }
 
 #reserve-btn {
     background-color: rgb(234, 175, 87);
     border: none;
     border-radius: 12px;
+    text-transform:none !important;
     font-family: 'Akaya Kanadaka';
     color: rgb(152, 71, 9);
     font-weight: bold;
@@ -76,6 +88,7 @@ span {
     /* border: 3px solid green; */
     border: none;
     font-family: 'Akaya Kanadaka';
+    text-transform:none !important;
     color:rgb(152, 71, 9);
     font-weight: bold;
     border-radius: 12px;

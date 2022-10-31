@@ -12,14 +12,50 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,600|Roboto+Mono:400,700&display=swap"
     rel="stylesheet" />
   <link href='https://fonts.googleapis.com/css?family=Akaya Kanadaka' rel='stylesheet'></link>
+  
+  <!-- MDB mdb-ui-kit -->
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css"
+  rel="stylesheet"
+  />
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./css/homePage.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="./css/navbar.css" type="text/css" media="screen" />
   
   <title>Restaurant Reservation System</title>
 </head>
 <body>
-  <nav></nav>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img
+            src="./assets/logo.webp"
+            height="120"
+            width="auto"
+            alt="Logo"
+            loading="lazy"
+            class="d-inline-block align-text-top"
+          />
+          <b>Sample Restaurant</b>
+      </a>
+      <!-- Collapse navbar -->
+      <div class="d-flex align-items-center justify-content-end collapse navbar-collapse" id="navbarSupportedContent">
+          <a href="#">
+            <button type="button" id="login-btn" class="btn btn-group-lg">
+              Login/Register
+            </button>
+          </a>
+      </div>
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+
+  <!-- Home content -->
   <div id="home" class="container-fluid">
     <h1>Sample Restaurant</h1>
     <div class="h-50 d-flex flex-column align-items-center justify-content-around btn-group">
