@@ -1,30 +1,25 @@
 const express = require("express")
 const router = express.Router()
 const User = require("../models/User")
+var bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
 
-/* 
-/user/{route}
-*/
-router.post("/register", async (req,res) => {
+router.post("/register", jsonParser, async (req,res) => {
     try {
         const user = new User({
-            FirstName: "req.body.FirstName",
-            LastName: "req.body.LastName",
-            PhoneNumber: "req.body.PhoneNumber",
-            Password: "req.body.Password"
+            FirstName: req.body.FirstName,
+            LastName: req.body.LastName,
+            PhoneNumber: req.body.PhoneNumber,
+            Password: req.body.Password
         })
         await user.save()
-        res.redirect("/login")
+        console.log("User added to database")
     } catch (error) {
-        //res.status(400).json({error})
-        console.log("Error adding user")
+        console.log("Error adding user", error)
     }
-    console.log("User added to database")
 })
 
-
-router.route("/login")
-.get((req,res) => {
+router.get("/login", (req,res) => {
     res.send("This is login page")
 })
 
