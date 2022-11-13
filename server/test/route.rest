@@ -11,3 +11,12 @@ Content-Type: application/json
     "PhoneNumber": "22",
     "Password": "aaa" 
 }
+
+###
+
+POST http://localhost:3000/addTable
+Content-Type: application/json
+
+{
+    "Size": 8
+}

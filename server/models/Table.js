@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const tableSchema = new mongoose.Schema({
     Size: {
-        type: int,
-        required: true
+        type: Number,
+        require: true
     },
     Open:{
         type: Boolean,
-        required: true
+        default: true
     }
 });
 
