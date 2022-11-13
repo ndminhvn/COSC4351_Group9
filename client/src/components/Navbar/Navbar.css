@@ -1,0 +1,46 @@
+.App-logo {
+	margin-left: 0.5em;
+	/* margin-top: -1em; */
+	/* vertical-align: middle; */
+	height: 18vh;
+    width: auto;
+	/* border: 1px solid blue; */
+}
+
+/* @media screen and (min-width: 300px) {
+	.App-logo {
+		height: auto;
+		width: 20px;
+	}
+}
+@media screen and (max-width: 700px) {
+	.App-logo {
+		height: 18vh;
+		width: auto;
+	}
+} */
+
+.main-nav {
+	/* border: 3px solid green; */
+	height: 18vh;
+}
+
+#nav-btn {
+	background-color: rgb(234, 175, 87);
+    text-transform:capitalize;
+    border: none;
+    border-radius: 24px;
+    font-family: 'Akaya Kanadaka';
+    color: rgb(152, 71, 9);
+    font-weight: bold;
+    padding: 2.5px 12.5px;
+    margin-right: 1rem;
+    margin-bottom: 15%;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#nav-btn:hover {
+    background-color: rgb(152, 71, 9);
+	color: rgb(234, 175, 87);
+}
