@@ -6,10 +6,17 @@ let reservationSchema = new mongoose.Schema({
        required: true
     },
     PartySize:{
-        type: int,
+        type: Number,
         required: true
     },
-    BookedTable: [],
+    BookedTable: {
+        type: Array,
+        required: true
+    },
+    Date: {
+        type: Date,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('Reservation', reservationSchema);
