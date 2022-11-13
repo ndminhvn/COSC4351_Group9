@@ -13,6 +13,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 //Routes
 app.use(require("./routes"));
 app.use(require("./routes/user"))
+app.use(require("./routes/addTable"))
 
 app.listen(3000, () =>{
     console.log("Server running on port 3000");
