@@ -1,6 +1,6 @@
 .App-logo {
 	margin-left: 0.5em;
-	/* margin-top: -1em; */
+	margin-top: -0.1em;
 	/* vertical-align: middle; */
 	height: 18vh;
     width: auto;
@@ -20,9 +20,20 @@
 	}
 } */
 
+b {
+    font-family: "Great Vibes", cursive;
+    /* font-family: 'monospace'; */
+    font-weight: bold;
+    font-size: 40px;
+    color: rgb(5, 22, 19);
+    letter-spacing: 0.2rem;
+}
+
 .main-nav {
 	/* border: 3px solid green; */
+    /* background-color: rgba(240, 248, 255, 0.95); */
 	height: 18vh;
+    /* box-shadow: 10px 10px 20px #ccc; */
 }
 
 #nav-btn {

@@ -14,6 +14,7 @@ const NavBar = () => {
 					{/* <Nav.Link href={`${window.location.protocol}//${window.location.host}`}> */}
 					<Nav.Link href='/'>
 						<Image fluid roundedCircle src={logo} className='App-logo shadow-sm' alt='logo' />
+            <b>Sample Restaurant</b>
 					</Nav.Link>
 				</Navbar.Brand>
 			</Container>
