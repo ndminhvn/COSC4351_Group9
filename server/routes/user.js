@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const User = require("../models/User")
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
 
 router.post("/register", jsonParser, async (req,res) => {
@@ -11,9 +11,15 @@ router.post("/register", jsonParser, async (req,res) => {
             LastName: req.body.LastName,
             PhoneNumber: req.body.PhoneNumber,
             Password: req.body.Password
-        })
-        await user.save()
-        console.log("User added to database")
+        });
+        User.findOne({PhoneNumber: user.PhoneNumber}, (err, docs) => {
+            if (docs === null){
+                user.save()
+                console.log("Successfully added ", user.FirstName)
+            } else {
+                console.log("Phone number found, please login.")
+            }})
+     
     } catch (error) {
         console.log("Error adding user", error)
     }
