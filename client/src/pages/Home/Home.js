@@ -13,7 +13,7 @@ const Home = () => {
             <source src={bgVideo} type='video/mp4' />
         </video>
         <div id='home'>
-            <Divider style={{ marginLeft:'30%', width:'600px' }} variant='dynamic' component="div" role="presentation">
+            <Divider id='divider' style={{ marginLeft:'30%', width:'600px' }} variant='dynamic' component="div" role="presentation">
                 <Typography color={'whitesmoke'} letterSpacing='0.25rem' variant="h5">WE ARE</Typography>
             </Divider>
             <h1>Team 9 Kitchen</h1>

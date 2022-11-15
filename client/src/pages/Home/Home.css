@@ -28,7 +28,7 @@ h1 {
     /* font-family: "acta-display", serif; */
     /* font-family: "Great Vibes", cursive; */
     font-family: 'Playfair Display', serif;
-    /* font-weight: bold; */
+    font-weight: 400;
     /* font-size: 113.5px; */
     font-size: 120px;
     /* letter-spacing: 0.5px; */
@@ -42,6 +42,10 @@ h1 {
         font-size: 110px;
         line-height: 100px;
     }
+}
+
+#divider::before, #divider::after {
+    border-top: thin solid rgba(248, 248, 248, 1);
 }
 
 .btn-group {
