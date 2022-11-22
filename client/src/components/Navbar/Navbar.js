@@ -4,7 +4,6 @@ import { Navbar, Nav, Image } from 'react-bootstrap';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import { Link } from '@mui/material';
-// import logo from '../../assets/logo.webp';
 
 import logo from '../../assets/logo1.png';
 
@@ -29,6 +28,7 @@ const NavBar = () => {
 
 		<Navbar.Collapse className='justify-content-end'>
 			<Nav>
+				<Link href='/reserve' className='nav-link' underline='none'>Reserve</Link>
 				<Link href='/login' className='nav-link' underline='none'>Login</Link>
 			</Nav>
 		</Navbar.Collapse>

@@ -46,7 +46,8 @@ button.navbar-toggler:focus {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 500;
     font-size: 23px;
-    margin-right: 8vw !important;
+    right: 8vw !important;
+    margin-left: 20px !important;
     overflow: hidden;
     display: block;
     /* padding: 0.2em 0; */
