@@ -1,4 +1,4 @@
-import Form from '../../components/Auth/Form';
+import Form from '../../components/Forms/UserAuthForm';
 import bgImage from '../../assets/loginbg.jpg';
 import './Login.css';
 
