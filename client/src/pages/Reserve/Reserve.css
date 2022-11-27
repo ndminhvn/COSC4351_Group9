@@ -12,3 +12,10 @@
     /* filter: blur(2px);
     -webkit-filter: blur(2px); */
 }
+
+#reserve-page {
+    border: solid 1px green;
+    position: relative;
+    height: 85vh;
+    width: 100%;
+}
