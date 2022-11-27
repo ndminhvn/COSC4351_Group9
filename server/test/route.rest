@@ -9,7 +9,7 @@ Content-Type: application/json
 {
     "firstName": "VoB",
     "lastName": "Burger",
-    "phoneRegister": 1234567,
+    "phoneRegister": "+1 234 566 7777",
     "passwordRegister": "pass123"
 
 }
@@ -19,7 +19,7 @@ POST   http://localhost:8000/user/login
 Content-Type: application/json
 
 {
-    "phoneLogin": 12345673,
+    "phoneLogin": "+1 234 566 7777",
     "passwordLogin": "pass123"
 }
 
