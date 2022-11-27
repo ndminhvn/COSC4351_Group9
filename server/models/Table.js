@@ -1,14 +1,19 @@
 const mongoose = require("mongoose");
+const reservationSchema = require("./Reservation");
 
 const tableSchema = new mongoose.Schema({
-    Size: {
+    capacity: {
         type: Number,
         require: true
     },
-    Open:{
+    isAvailable:{
         type: Boolean,
         default: true
-    }
+    },
+    reservation: {
+        required: false,
+        type: reservationSchema
+      }
 });
 
 module.exports = mongoose.model('Table', tableSchema);

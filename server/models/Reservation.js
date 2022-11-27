@@ -1,20 +1,12 @@
 const mongoose = require("mongoose");
 
 let reservationSchema = new mongoose.Schema({
-    Date:{
-       type: String,
+    phoneNumber:{
+       type: Number,
        required: true
     },
-    PartySize:{
+    partySize:{
         type: Number,
-        required: true
-    },
-    BookedTable: {
-        type: Array,
-        required: true
-    },
-    Date: {
-        type: Date,
         required: true
     }
 });
