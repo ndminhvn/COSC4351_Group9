@@ -6,6 +6,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import 'yup-phone';
+import axios from 'axios';
 
 import './UserAuthForm.css';
 
@@ -63,12 +64,22 @@ const LoginForm = () => {
     resolver: yupResolver(validationRegisterForm)
   })
 
-  const onSubmit = data => {
-    console.log(JSON.stringify(data, null, 2));
+  const onLogin = data => {
+    // console.log(JSON.stringify(data, null, 2));
+    axios.post('http://localhost:8000/login', {data})
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+    })
   };
 
-  const onSubmit1 = data => {
-    console.log(JSON.stringify(data, null, 2));
+  const onRegister = data => {
+    // console.log(JSON.stringify(data, null, 2));
+    axios.post('http://localhost:8000/register', {data})
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+    })
   };
 
   return (
@@ -106,7 +117,7 @@ const LoginForm = () => {
 
           {/* Login Form */}
           <TabPanel value='1'>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onLogin)}>
               <Controller 
                 name='phone'
                 control={control}
@@ -162,7 +173,7 @@ const LoginForm = () => {
             
           {/* Register Form */}
           <TabPanel value="2">
-            <form onSubmit={handleSubmit1(onSubmit1)}>
+            <form onSubmit={handleSubmit1(onRegister)}>
               <TextField
                 required
                 fullWidth
