@@ -18,9 +18,9 @@ const LoginForm = () => {
   };
 
   const validationLoginForm = Yup.object().shape({
-    phone: Yup.string().phone('US', true, 'Phone number is invalid')
+    phoneLogin: Yup.string().phone('US', true, 'Phone number is invalid')
       .required(),
-    password: Yup.string()
+    passwordLogin: Yup.string()
       .required('Password is required')
       .min(6, 'Password must be at least 6 characters')
       .max(30, 'Password must not exceed 30 characters'),
@@ -64,22 +64,40 @@ const LoginForm = () => {
     resolver: yupResolver(validationRegisterForm)
   })
 
-  const onLogin = data => {
+  const onLogin = async (data) => {
     // console.log(JSON.stringify(data, null, 2));
-    axios.post('http://localhost:8000/login', {data})
+    await axios.post('http://localhost:8000/user/login', data)
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        if (res.status === 200) {
+          if (res.data === 'This phone number is not yet registered') {
+            console.log('Login failed. Please try again')
+            alert('Login failed. Please try again')
+          }
+          else console.log('Login successful');
+        }
+        else {
+          console.log('Something went wrong. Please try again');
+          alert('Something went wrong. Please try again.');
+        }
     })
   };
 
-  const onRegister = data => {
+  const onRegister = async (data) => {
     // console.log(JSON.stringify(data, null, 2));
-    axios.post('http://localhost:8000/register', {data})
+    await axios.post('http://localhost:8000/user/register', data)
       .then(res => {
-        console.log(res);
-        console.log(res.data);
-    })
+        if (res.status === 200) {
+          if (res.data === 'Phone number found, please login.') {
+            console.log('Phone number found, please login.')
+            alert('Phone number found, please login.')
+          }
+          else console.log('Successfully registered');
+        }
+        else {
+          console.log('Something went wrong. Please try again');
+          alert('Something went wrong. Please try again.');
+        }
+      })
   };
 
   return (
@@ -119,7 +137,7 @@ const LoginForm = () => {
           <TabPanel value='1'>
             <form onSubmit={handleSubmit(onLogin)}>
               <Controller 
-                name='phone'
+                name='phoneLogin'
                 control={control}
                 rules={{ validate: matchIsValidTel }}
                 render={({ field }) => (
@@ -130,28 +148,28 @@ const LoginForm = () => {
                     label='Phone Number'
                     margin='normal'
                     {...field}
-                    error={errors.phone ? true : false}
+                    error={errors.phoneLogin ? true : false}
                   />
                 )}
               />
               <Typography variant="inherit" color="textSecondary">
-                {errors.phone?.message}
+                {errors.phoneLogin?.message}
               </Typography>
 
               <TextField
                 required
                 fullWidth
-                name='password'
+                name='passwordLogin'
                 // control={control}
                 label='Password'
                 type='password'
                 autoComplete='currentPassword'
                 margin='normal'
-                {...register('password')}
-                error={errors.password ? true : false}
+                {...register('passwordLogin')}
+                error={errors.passwordLogin ? true : false}
               />
               <Typography variant="inherit" color="textSecondary">
-                {errors.password?.message}
+                {errors.passwordLogin?.message}
               </Typography>
               <Button 
                 className='login-btn mb-3 mt-3' 
