@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 import 'yup-phone';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { setToken, getToken } from '../../useToken.js';
 
 import './UserAuthForm.css';
 
@@ -79,6 +80,7 @@ const LoginForm = () => {
             alert("Password is incorrect. Please try again.")
           }
           if (res.data === 'Login successfully') {
+            setToken(res.data.phone);
             alert('You have successfully logged in!')
             navigate('/')
             // console.log('Login successful')
