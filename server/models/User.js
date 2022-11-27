@@ -19,12 +19,10 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     mailingAddress: {
-        type: String,
-        require: true
+        type: String
     },
     billingAddress: {
-        type: String,
-        require: true
+        type: String
     },
     preferDiner: {
         type: Number,
