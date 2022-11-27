@@ -7,11 +7,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import 'yup-phone';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 import './UserAuthForm.css';
 
 const LoginForm = () => {
   const [tab, setTab] = useState('1');
+  const navigate = useNavigate();
 
   const handleTabChange = (event, value) => {
     setTab(value);
@@ -70,13 +72,20 @@ const LoginForm = () => {
       .then(res => {
         if (res.status === 200) {
           if (res.data === 'This phone number is not yet registered') {
-            console.log('Login failed. Please try again')
-            alert('Login failed. Please try again')
+            // console.log('Login failed. Please try again')
+            alert("We couldn't find any user with this phone number. Please try again.")
           }
-          else console.log('Login successful');
+          if (res.data === 'Wrong password') {
+            alert("Password is incorrect. Please try again.")
+          }
+          if (res.data === 'Login successfully') {
+            alert('You have successfully logged in!')
+            navigate('/')
+            // console.log('Login successful')
+          };
         }
         else {
-          console.log('Something went wrong. Please try again');
+          // console.log('Something went wrong. Please try again');
           alert('Something went wrong. Please try again.');
         }
     })
@@ -88,13 +97,18 @@ const LoginForm = () => {
       .then(res => {
         if (res.status === 200) {
           if (res.data === 'Phone number found, please login.') {
-            console.log('Phone number found, please login.')
+            // console.log('Phone number found, please login.')
             alert('Phone number found, please login.')
+            navigate('/login')
+            window.location.reload(true);
           }
-          else console.log('Successfully registered');
+          else {
+            navigate('/login')
+            // console.log('Successfully registered');
+          }
         }
         else {
-          console.log('Something went wrong. Please try again');
+          // console.log('Something went wrong. Please try again');
           alert('Something went wrong. Please try again.');
         }
       })
