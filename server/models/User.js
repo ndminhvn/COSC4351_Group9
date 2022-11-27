@@ -1,23 +1,51 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    FirstName: {
+    firstName: {
         type: String,
         required: true
     },
-    LastName: {
+    lastName: {
         type: String,
         required: true
     },
-    PhoneNumber: {
-        type: String,
+    phoneNumber: {
+        type: Number,
         required: true,
         unique: true
     },
-    Password: {
+    password: {
         type: String,
         required: true
+    },
+    mailingAddress: {
+        type: String,
+        require: true
+    },
+    billingAddress: {
+        type: String,
+        require: true
+    },
+    preferDiner: {
+        type: Number,
+        default: 2
+    },
+    earnedPoints: {
+        type: Number,
+        default: 0
+    },
+    preferPayment: {
+        type: String,
+        enum : ['Credit','Cash', 'Check'],
+        default: 'Credit'
+    },
+    creditCard: {
+        cardNumber: Number,
+        expDate: Date,
+        cvv: Number
     }
+
 });
 
 module.exports = mongoose.model('User', userSchema);
+

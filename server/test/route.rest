@@ -1,13 +1,27 @@
-GET http://localhost:3000/login
+
+GET http://localhost:8000/
 
 ###
 
-POST http://localhost:3000/register
+POST http://localhost:8000/user/register/
 Content-Type: application/json
 
 {
-    "FirstName": "Tom",
-    "LastName": "Jerry",
-    "PhoneNumber": "1234",
-    "Password": "xxb" 
+    "firstName": "Anna",
+    "lastName": "Burger",
+    "phoneNumber": 1234567890,
+    "password": "pass123",
+    "mailingAddress": "123 Main",
+    "billingAddress": "123 Main"
+
 }
+
+###
+POST   http://localhost:8000/user/login
+Content-Type: application/json
+
+{
+    "phoneNumber": 1234567890,
+    "password": "pass123"
+}
+

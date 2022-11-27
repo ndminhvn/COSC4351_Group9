@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const PORT = 8000
 
 
 
@@ -11,9 +12,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((err) => console.log(err));
 
 //Routes
-app.use(require("./routes"));
-app.use(require("./routes/user"))
+app.use("/user", require("./routes/user"))
 
-app.listen(3000, () =>{
-    console.log("Server running on port 3000");
+app.listen(PORT, () =>{
+    console.log("Server running on port 8000");
 });

@@ -1,15 +1,14 @@
 const mongoose = require("mongoose");
 
 let reservationSchema = new mongoose.Schema({
-    Date:{
-       type: String,
+    phoneNumber:{
+       type: Number,
        required: true
     },
-    PartySize:{
-        type: int,
+    partySize:{
+        type: Number,
         required: true
-    },
-    BookedTable: [],
+    }
 });
 
 module.exports = mongoose.model('Reservation', reservationSchema);
