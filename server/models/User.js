@@ -19,10 +19,12 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     mailingAddress: {
-        type: String
+        type: String,
+        default: "None entered"
     },
     billingAddress: {
-        type: String
+        type: String,
+        default: "None entered"
     },
     preferDiner: {
         type: Number,
@@ -38,9 +40,20 @@ const userSchema = new mongoose.Schema({
         default: 'Credit'
     },
     creditCard: {
-        cardNumber: Number,
-        expDate: Date,
-        cvv: Number
+        cardNumber: {
+            type: String,
+            default: "0000 0000 0000 0000"
+        },
+        expDate: {
+            type: String,
+            default: "0000"
+        },
+        cvv: {
+            type: String,
+            default: "000"
+        }
+            
+        
     }
 
 });

@@ -1,5 +1,5 @@
 
-GET http://localhost:8000/
+GET http://localhost:8000/user/login
 
 ###
 
@@ -7,7 +7,7 @@ POST http://localhost:8000/user/register/
 Content-Type: application/json
 
 {
-    "firstName": "VoB",
+    "firstName": "Bob",
     "lastName": "Burger",
     "phoneRegister": "+1 234 566 7777",
     "passwordRegister": "pass123"
@@ -21,5 +21,20 @@ Content-Type: application/json
 {
     "phoneLogin": "+1 234 566 7777",
     "passwordLogin": "pass123"
+}
+
+###
+GET http://localhost:8000/user/details/+1%20234%20566%207777
+
+###
+POST http://localhost:8000/user/details/+1%20234%20566%207777
+Content-Type: application/json
+
+{
+    "mailingAddress": "Houston",
+    "billingAddress": "Newyork",
+    "preferDiner": 6,
+    "preferPayment": "Check",
+    "cvv": 999
 }
 

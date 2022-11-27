@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const reservationSchema = require("./Reservation");
 
 const tableSchema = new mongoose.Schema({
+    tableID:{
+        type: Number,
+        required: true
+    },
     capacity: {
         type: Number,
         require: true
