@@ -7,12 +7,10 @@ POST http://localhost:8000/user/register/
 Content-Type: application/json
 
 {
-    "firstName": "Anna",
+    "firstName": "VoB",
     "lastName": "Burger",
-    "phoneNumber": 1234567890,
-    "password": "pass123",
-    "mailingAddress": "123 Main",
-    "billingAddress": "123 Main"
+    "phoneRegister": 1234567,
+    "passwordRegister": "pass123"
 
 }
 
@@ -21,7 +19,7 @@ POST   http://localhost:8000/user/login
 Content-Type: application/json
 
 {
-    "phoneNumber": 1234567890,
-    "password": "pass123"
+    "phoneLogin": 12345673,
+    "passwordLogin": "pass123"
 }
 
