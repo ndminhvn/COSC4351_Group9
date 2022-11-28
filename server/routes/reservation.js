@@ -57,7 +57,7 @@ function pickTable(tables, partySize) {
       temp = []
       for (let t of tables) {
         if (t.isAvailable) {
-          if ((partySize - t.capacity) >= 0) {
+          if ((partySize - t.capacity) > 0) {
             temp.push(t)
             partySize = partySize - t.capacity
           } else {
