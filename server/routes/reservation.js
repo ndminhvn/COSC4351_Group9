@@ -30,7 +30,6 @@ router.post("/availability", async (req, res) => {
       })
       await day.save()
       console.log("Record not exist, initalized new record")
-      const newDay = await Day.find({ date: dateTime })
       const selectedTable = await pickTable(allTables, partySize)
       res.status(200).send(selectedTable)
     }
