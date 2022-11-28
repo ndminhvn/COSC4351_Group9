@@ -8,7 +8,7 @@ export function getToken() {
     return userToken?.token;
 }
 
-export const removeToken= () => {
+export function removeToken() {
     sessionStorage.removeItem('token');
     setToken(null);
 }
