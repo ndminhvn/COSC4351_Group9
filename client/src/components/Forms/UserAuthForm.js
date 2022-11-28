@@ -7,20 +7,23 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import 'yup-phone';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import { setToken, getToken } from '../../useToken.js';
 
 import './UserAuthForm.css';
 
 const LoginForm = () => {
   const [tab, setTab] = useState('1');
+  const navigate = useNavigate();
 
   const handleTabChange = (event, value) => {
     setTab(value);
   };
 
   const validationLoginForm = Yup.object().shape({
-    phone: Yup.string().phone('US', true, 'Phone number is invalid')
+    phoneLogin: Yup.string().phone('US', true, 'Phone number is invalid')
       .required(),
-    password: Yup.string()
+    passwordLogin: Yup.string()
       .required('Password is required')
       .min(6, 'Password must be at least 6 characters')
       .max(30, 'Password must not exceed 30 characters'),
@@ -64,22 +67,53 @@ const LoginForm = () => {
     resolver: yupResolver(validationRegisterForm)
   })
 
-  const onLogin = data => {
+  const onLogin = async (data) => {
     // console.log(JSON.stringify(data, null, 2));
-    axios.post('http://localhost:8000/login', {data})
+    await axios.post('http://localhost:8000/user/login', data)
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        if (res.status === 200) {
+          if (res.data === 'This phone number is not yet registered') {
+            // console.log('Login failed. Please try again')
+            alert("We couldn't find any user with this phone number. Please try again.")
+          }
+          if (res.data === 'Wrong password') {
+            alert("Password is incorrect. Please try again.")
+          }
+          if (res.data === 'Login successfully') {
+            setToken(res.data.phone);
+            alert('You have successfully logged in!')
+            navigate('/')
+            // console.log('Login successful')
+          };
+        }
+        else {
+          // console.log('Something went wrong. Please try again');
+          alert('Something went wrong. Please try again.');
+        }
     })
   };
 
-  const onRegister = data => {
+  const onRegister = async (data) => {
     // console.log(JSON.stringify(data, null, 2));
-    axios.post('http://localhost:8000/register', {data})
+    await axios.post('http://localhost:8000/user/register', data)
       .then(res => {
-        console.log(res);
-        console.log(res.data);
-    })
+        if (res.status === 200) {
+          if (res.data === 'Phone number found, please login.') {
+            // console.log('Phone number found, please login.')
+            alert('Phone number found, please login.')
+            navigate('/login')
+            window.location.reload(true);
+          }
+          else {
+            navigate('/login')
+            // console.log('Successfully registered');
+          }
+        }
+        else {
+          // console.log('Something went wrong. Please try again');
+          alert('Something went wrong. Please try again.');
+        }
+      })
   };
 
   return (
@@ -119,7 +153,7 @@ const LoginForm = () => {
           <TabPanel value='1'>
             <form onSubmit={handleSubmit(onLogin)}>
               <Controller 
-                name='phone'
+                name='phoneLogin'
                 control={control}
                 rules={{ validate: matchIsValidTel }}
                 render={({ field }) => (
@@ -130,28 +164,28 @@ const LoginForm = () => {
                     label='Phone Number'
                     margin='normal'
                     {...field}
-                    error={errors.phone ? true : false}
+                    error={errors.phoneLogin ? true : false}
                   />
                 )}
               />
               <Typography variant="inherit" color="textSecondary">
-                {errors.phone?.message}
+                {errors.phoneLogin?.message}
               </Typography>
 
               <TextField
                 required
                 fullWidth
-                name='password'
+                name='passwordLogin'
                 // control={control}
                 label='Password'
                 type='password'
                 autoComplete='currentPassword'
                 margin='normal'
-                {...register('password')}
-                error={errors.password ? true : false}
+                {...register('passwordLogin')}
+                error={errors.passwordLogin ? true : false}
               />
               <Typography variant="inherit" color="textSecondary">
-                {errors.password?.message}
+                {errors.passwordLogin?.message}
               </Typography>
               <Button 
                 className='login-btn mb-3 mt-3' 
