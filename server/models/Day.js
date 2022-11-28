@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const tableSchema = require("./Table");
+const tableSchema = require("./Table").schema;
 
 const daySchema = new mongoose.Schema({
     date: {
@@ -8,4 +8,6 @@ const daySchema = new mongoose.Schema({
     tables: [tableSchema]
 })
 
-module.exports = mongoose.model('Day', daySchema);
+let Day = mongoose.model("Day", daySchema)
+module.exports.model = Day;
+module.exports.Schema = daySchema

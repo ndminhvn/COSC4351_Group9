@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
-const reservationSchema = require("./Reservation");
+const reservationSchema = require("./Reservation").schema;
 
 const tableSchema = new mongoose.Schema({
-    tableID:{
-        type: Number,
+    name:{
+        type: String,
         required: true
     },
     capacity: {
         type: Number,
-        require: true
+        required: true
     },
     isAvailable:{
         type: Boolean,
@@ -20,4 +20,8 @@ const tableSchema = new mongoose.Schema({
       }
 });
 
-module.exports = mongoose.model('Table', tableSchema);
+// module.exports = mongoose.model('Table', tableSchema);
+var Table = mongoose.model("Table", tableSchema);
+
+module.exports.model = Table;
+module.exports.schema = tableSchema;

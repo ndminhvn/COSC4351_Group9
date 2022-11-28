@@ -27,7 +27,8 @@ Content-Type: application/json
 GET http://localhost:8000/user/details/+1%20234%20566%207777
 
 ###
-POST http://localhost:8000/user/details/+1%20234%20566%207777
+
+PUT  http://localhost:8000/user/details/+1%20234%20566%207777
 Content-Type: application/json
 
 {
@@ -38,3 +39,15 @@ Content-Type: application/json
     "cvv": 999
 }
 
+###
+
+POST http://localhost:8000/reservation/availability
+Content-Type: application/json
+
+{
+    "year": "2025",
+    "month": "6",
+    "day": "29",
+    "hour": "10",
+    "partySize": 200
+}

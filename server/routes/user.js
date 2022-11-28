@@ -65,7 +65,7 @@ router.get("/details/:phone", async (req, res) =>{
     res.send(user)
 })
 
-router.post("/details/:phone", async (req, res) =>{
+router.put("/details/:phone", async (req, res) =>{
     //update ALL user's non-required information
     const user = await User.findOne({phoneNumber: req.params.phone})
     if (user === null){
