@@ -38,3 +38,12 @@ Content-Type: application/json
     "cvv": 999
 }
 
+###
+
+POST http://localhost:8000/reservation/availability
+Content-Type: application/json
+
+{
+    "mailingAddress": "Houston",
+
+}
