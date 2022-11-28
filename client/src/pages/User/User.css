@@ -5,16 +5,14 @@
     z-index: -1;
     width: 100vw;
     height: 100vh;
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
     background-blend-mode:darken;
-    /* filter: blur(2px);
-    -webkit-filter: blur(2px); */
 }
 
 #user-page {
-    border: solid 1px green;
+    /* border: solid 1px green; */
     position: relative;
     height: 85vh;
     width: 100%;
