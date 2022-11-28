@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Navbar, Nav, Image } from 'react-bootstrap';
 import { Link, Tooltip, Menu, MenuItem, Typography } from '@mui/material';
-import { setToken, getToken, removeToken } from '../../useToken.js';
+import { getToken, removeToken } from '../../useToken.js';
 
 import logo from '../../assets/logo1.png';
 
