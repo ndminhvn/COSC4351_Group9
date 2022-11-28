@@ -29,7 +29,7 @@ router.post("/availability", async (req, res) => {
         tables: allTables
       })
       await day.save()
-      console.log("Create new datetime. Here are default docs")
+      console.log("Record not exist, initalized new record")
       const newDay = await Day.find({ date: dateTime })
       const selectedTable = await pickTable(allTables, partySize)
       res.status(200).send(selectedTable)
@@ -57,7 +57,7 @@ function pickTable(tables, partySize) {
       temp = []
       for (let t of tables) {
         if (t.isAvailable) {
-          if ((partySize - t.capacity) > 0) {
+          if ((partySize - t.capacity) >= 0) {
             temp.push(t)
             partySize = partySize - t.capacity
           } else {
