@@ -16,6 +16,7 @@ app.use(cors());
 
 //Routes
 app.use("/user", require("./routes/user"))
+app.use("/reservation", require("./routes/reservation"))
 
 app.listen(PORT, () =>{
     console.log(`Server running on port ${PORT}`);
