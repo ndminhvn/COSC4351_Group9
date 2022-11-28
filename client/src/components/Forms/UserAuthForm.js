@@ -71,26 +71,14 @@ const LoginForm = () => {
     // console.log(JSON.stringify(data, null, 2));
     await axios.post('http://localhost:8000/user/login', data)
       .then(res => {
-        if (res.status === 200) {
-          if (res.data === 'This phone number is not yet registered') {
-            // console.log('Login failed. Please try again')
-            alert("We couldn't find any user with this phone number. Please try again.")
-          }
-          if (res.data === 'Wrong password') {
-            alert("Password is incorrect. Please try again.")
-          }
-          if (res.data === 'Login successfully') {
-            setToken(res.data.phone);
-            alert('You have successfully logged in!')
-            navigate('/')
-            // console.log('Login successful')
-          };
-        }
-        else {
-          // console.log('Something went wrong. Please try again');
-          alert('Something went wrong. Please try again.');
-        }
-    })
+        setToken(res.data);
+        alert('You have successfully logged in!');
+        navigate('/');
+        window.location.reload(true);
+      }).catch(error => {
+        console.error(error);
+        alert('Something went wrong. Please try again.');
+      })
   };
 
   const onRegister = async (data) => {
