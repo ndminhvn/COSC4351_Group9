@@ -3,7 +3,7 @@
     right: 0;
     bottom: 0;
     z-index: -1;
-    width: auto;
+    width: 100vw;
     height: 100vh;
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
