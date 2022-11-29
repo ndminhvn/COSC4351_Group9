@@ -10,11 +10,15 @@ function isHighTraffic(day){
         "2023-11-10": "Veterans Day", 
         "2023-11-23": "Thanksgiving Day", 
         "2023-12-25": "Christmas Day"}
+      
+    dateString = day.getFullYear() + '-' + (day.getMonth()+1) + '-' + day.getDate()
+
+    if (dateString in holidays) {
+        return true
+    }
     
-    // check if day is a holiday
-    if (day in holidays) return true
+    let dayOfWeek = day.getDay()
     
-    let dayOfWeek = new Date(day).getDay()
     //modify dayOfWeek to match with local time
     if (dayOfWeek == 6) {
         dayOfWeek = 0;
@@ -26,9 +30,9 @@ function isHighTraffic(day){
     if ((dayOfWeek === 6) || (dayOfWeek  === 0)) return true
 
     // day is neither holiday nor weekend
-    return false
-    
+    return false 
 }
 
-module.exports = isHighTraffic
+//console.log(isHighTraffic(new Date(2022,11,25,12)))
 
+module.exports = isHighTraffic
