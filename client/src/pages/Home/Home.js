@@ -14,7 +14,7 @@ const Home = () => {
         </video>
         <div id='home'>
             <div className='text-center'>
-                <Divider id='divider' style={{ marginLeft:'30%', width:'600px' }} variant='dynamic' component="div" role="presentation">
+                <Divider id='divider' style={{ marginLeft:'29%', width:'600px' }} variant='dynamic' component="div" role="presentation">
                     <Typography color={'whitesmoke'} letterSpacing='0.25rem' variant="h5">WE ARE</Typography>
                 </Divider>
                 <h1>Team 9 Kitchen</h1>
@@ -24,11 +24,11 @@ const Home = () => {
                     Book a table now
                     <ArrowForwardIcon id='arrow-icon' sx={{ mr: 1 }} />
                 </Button>
-                <span><p><i>Already reserved a table?</i></p>
+                {/* <span><p><i>Already reserved a table?</i></p>
                     <Button variant='contained' href='/detail' id='check-btn' size='lg'>
                         See your detail
                     </Button>
-                </span>
+                </span> */}
             </div>
         </div>
         </>
