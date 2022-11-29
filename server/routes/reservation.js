@@ -70,7 +70,7 @@ function pickTable(tables, partySize) {
       }
     }
   }
-  msg += "Not enough tables for this party size"
+  msg += "Not enough tables for this party size."
   return msg
   } catch (error) {res.status(500).send("Error during combining table")}
 
