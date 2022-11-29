@@ -49,5 +49,44 @@ Content-Type: application/json
     "month": "6",
     "day": "29",
     "hour": "10",
-    "partySize": 20
+    "partySize": 10
 }
+
+###
+
+//reservation
+POST http://localhost:8000/reservation/confirm
+Content-Type: application/json
+
+{
+    "year": "2022",
+    "month": "12",
+    "day": "3",
+    "hour": "10",
+    "firstName": "Quang",
+    "lastName": "Du",
+    "phoneNumber": "45643231",
+    "cardNumber": "2222 2222 2222",
+    "expDate": "2222",
+    "cvv":"222",
+
+    "table_arr": [
+  {
+    "name": "Table 8",
+    "capacity": 6,
+    "isAvailable": true,
+    "_id": "6385740425b8f75d6b71d08d",
+    "__v": 0
+  },
+  {
+    "name": "Table 5",
+    "capacity": 4,
+    "isAvailable": true,
+    "_id": "6385740425b8f75d6b71d087",
+    "__v": 0
+  }
+]
+}
+
+###
+GET http://localhost:8000/reservation/confirm/+1%20234%20566%207777
