@@ -14,8 +14,13 @@
 }
 
 #reserve-page {
-    border: solid 1px green;
+    /* border: solid 1px green; */
     position: relative;
     height: 85vh;
     width: 100%;
+}
+
+.title {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 500;
 }
