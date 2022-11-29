@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import 'yup-phone';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { setToken, getToken } from '../../useToken.js';
+import { setToken } from '../../useToken.js';
 
 import './UserAuthForm.css';
 

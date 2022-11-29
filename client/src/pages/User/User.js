@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { getToken, removeToken } from '../../useToken.js';
+import { getToken } from '../../useToken.js';
 import { Box, Button, Grid, Paper } from '@mui/material';
 import axios from 'axios';
 import Login from '../Login/Login';
