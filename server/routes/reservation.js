@@ -3,6 +3,9 @@ var router = express.Router()
 var mongoose = require("mongoose")
 const Day = require("../models/Day").model
 const Table = require("../models/Table").model
+const isHighTrafficDay = require("../controllers/isHighTrafficDay")
+
+
 router.use(express.json())
 
 //http://localhost:8000/reservation/availability
@@ -19,7 +22,6 @@ router.post("/availability", async (req, res) => {
 
     const isExist = await Day.findOne({ date: dateTime })
     if (isExist !== null) {
-      console.log("Record already exist")
       let selectedTable = pickTable(isExist.tables, partySize)
       res.status(200).send(selectedTable)
     } else {
@@ -29,7 +31,6 @@ router.post("/availability", async (req, res) => {
         tables: allTables
       })
       await day.save()
-      console.log("Record not exist, initalized new record")
       const selectedTable = await pickTable(allTables, partySize)
       res.status(200).send(selectedTable)
     }
@@ -41,42 +42,36 @@ router.post("/availability", async (req, res) => {
 
 function pickTable(tables, partySize) {
   try {
-    //sort all tables based on size
-    tables.sort((a, b) => {
-      if (a.capacity < b.capacity) return -1;
-      if (a.capacity > b.capacity) return 1;
-      if (a.capacity === b.capacity) return 0;
-    })
-    var size = Object.keys(tables).length;
-    let maxCapacity = tables[size - 1].capacity;
-    let reserveTable = [];
-    let msg = ""
+  let msg = "";
 
-    if (partySize > maxCapacity) { //combine table algorithm
-      temp = []
-      for (let t of tables) {
-        if (t.isAvailable) {
-          if ((partySize - t.capacity) > 0) {
-            temp.push(t)
-            partySize = partySize - t.capacity
-          } else {
-            temp.push(t)
-            return temp
-          }
-        }
-      }
-      msg = "Does not support this party size"
-    } else { // single table algorithm
-      for (let t of tables) {
-        if ((t.capacity >= partySize) && t.isAvailable) {
-          reserveTable.push(t)
-          return reserveTable
-        }
-      }
-      msg = "Party size supported but no available table"
+  //case 1: reserve only one table
+  for (let table of tables){
+    if (table.capacity >= partySize && table.isAvailable == true){
+      return table
     }
+  }
+  msg += `No single table available for party size of ${partySize}, so we have to combine tables. \n`;
 
-    return msg
+  //case 2: reserve more than 1 table
+  let combinedTables = []
+  tables.sort((a, b) => b.capacity - a.capacity); // sort table size in descending order [6,6,6,4,4,4,2,2]
+
+  //If we get here, partySize > maxCapacity for sure
+  for (let table of tables){
+    if (table.isAvailable) {
+      if (partySize - table.capacity > 0) {
+        combinedTables.push(table)
+        partySize = partySize - table.capacity
+      } else if (partySize - table.capacity < -1) { 
+        continue
+      } else { // partySize - table.capacity = {-1,0}
+        combinedTables.push(table)
+        return combinedTables
+      }
+    }
+  }
+  msg += "Not enough tables for this party size"
+  return msg
   } catch (error) {res.status(500).send("Error during combining table")}
 
 }

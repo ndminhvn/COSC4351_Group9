@@ -49,5 +49,5 @@ Content-Type: application/json
     "month": "6",
     "day": "29",
     "hour": "10",
-    "partySize": 10
+    "partySize": 20
 }
