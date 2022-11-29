@@ -39,24 +39,28 @@ router.post("/confirm", async (req, res) => {
       cardNumber: req.body.cardNumber,
       expDate: req.body.expDate,
       cvv: req.body.cvv
-    }})
+    }
+  })
 
   try {
-    var day = await Day.findOne({dateTime})
+    var day = await Day.findOne({ dateTime })
     for (let table of day.tables) {
-      for (let availableTable of table_arr){
-          if (table.name == availableTable.name){
-              console.log("Reserved ",availableTable.name, "on: ", dateTime)
-              table.isAvailable = false
-              table.reservation = reservation
-          }
+      for (let availableTable of table_arr) {
+        if (table.name == availableTable.name) {
+          console.log("Reserved ", availableTable.name, "on: ", dateTime)
+          table.isAvailable = false
+          table.reservation = reservation
+        }
       }
     }
-    await day.save();
+    //console.log(day)
+    
+    await day.save()
     await reservation.save()
 
+
     let fee_msg = ""
-    if(isHighTrafficDay(dateTime)){
+    if (isHighTrafficDay(dateTime)) {
       fee_msg = "Due to weekends/holidays, your card will be charge a holding fee of $10"
     }
     res.status(200).send("Successfully booked.\n" + fee_msg)
@@ -72,7 +76,7 @@ router.post("/confirm", async (req, res) => {
 router.get("/confirm/:phone", async (req, res) => {
   // get information for autofill
   let phoneNumber = req.params.phone
-  const user = await User.findOne({phoneNumber})
+  const user = await User.findOne({ phoneNumber })
   res.status(200).send(user)
 })
 

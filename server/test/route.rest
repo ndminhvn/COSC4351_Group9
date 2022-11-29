@@ -47,9 +47,9 @@ Content-Type: application/json
 {
     "year": "2023",
     "month": "7",
-    "day": "5",
+    "day": "20",
     "hour": "10",
-    "partySize": 1
+    "partySize": 20
 }
 
 ###
@@ -61,7 +61,7 @@ Content-Type: application/json
 {
     "year": "2023",
     "month": "7",
-    "day": "5",
+    "day": "20",
     "hour": "10",
     "firstName": "Quang",
     "lastName": "Du",
@@ -72,10 +72,31 @@ Content-Type: application/json
 
     "table_arr": [
   {
-    "name": "Table 1",
+    "name": "Table 6",
+    "capacity": 6,
+    "isAvailable": true,
+    "_id": "6385740425b8f75d6b71d089",
+    "__v": 0
+  },
+  {
+    "name": "Table 7",
+    "capacity": 6,
+    "isAvailable": true,
+    "_id": "6385740425b8f75d6b71d08b",
+    "__v": 0
+  },
+  {
+    "name": "Table 8",
+    "capacity": 6,
+    "isAvailable": true,
+    "_id": "6385740425b8f75d6b71d08d",
+    "__v": 0
+  },
+  {
+    "name": "Table 2",
     "capacity": 2,
     "isAvailable": true,
-    "_id": "6385740425b8f75d6b71d07f",
+    "_id": "6385740425b8f75d6b71d081",
     "__v": 0
   }
 ]
