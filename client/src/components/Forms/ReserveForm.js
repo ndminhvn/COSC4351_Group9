@@ -35,16 +35,24 @@ const steps = [
 
 const guestOptions = [1,2,3,4,5,6,7,8,9,10];
 
-const timeOptions = [11,12,13,14,15,16,17,18,19,20];
+const hourOptions = [11,12,13,14,15,16,17,18,19,20];
+
+const getCurrentHour = () => {
+    let today = new Date();
+    return today.getHours();
+}
 
 const ReserveForm = () => {
 
     const [activeStep, setActiveStep] = useState(0);
     // const [completed, setCompleted] = useState({});
     
-    const [inputFirstStep, setInputFirstStep] = useState({});
-    const [date, setDate] = useState({});
+    const [inputFirstStep, setInputFirstStep] = useState({});   // contain time and num of guests from input
+    const [date, setDate] = useState({});               // date value from date picker
 
+    const [tableList, setTableList] = useState([]);
+
+    // filter out only necessary fields from date
     const handleDateBeforeSubmit = (date) => {
         return Object.keys(date).reduce((obj, k) => {
             if (['$y', '$M', '$D'].includes(k)) {
@@ -54,6 +62,7 @@ const ReserveForm = () => {
         }, {});
     };
 
+    // modify key fields in date for api
     const changeKeyNameInDateBeforeSubmit = (date) => {
         let newDate = {year:'', month:'', day:''}
         newDate.year = date.$y;
@@ -61,13 +70,15 @@ const ReserveForm = () => {
         newDate.day = date.$D;
         return newDate;
     };
-
+    
+    // keep track of time and num of guest from input
     const handleFirstStepChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputFirstStep(values => ({...values, [name]: value}))
     };
 
+    // handle first step form submit: check table availability
     const handleFirstSubmit = async (event, data) => {
         event.preventDefault();
         const datePrepare = handleDateBeforeSubmit(date);
@@ -76,12 +87,15 @@ const ReserveForm = () => {
         // console.log(JSON.stringify(data, null, 2));
         await axios.post('http://localhost:8000/reservation/availability', data)
         .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
+            // save res.data to tableList
+            setTableList(res.data);
+            // go to next step
+            handleNext();
         }).catch(error => {
             console.error(error);
             alert('Something went wrong. Please try again.');
         })
-        handleNext();
     };
 
     const handleNext = () => {
@@ -149,9 +163,9 @@ const ReserveForm = () => {
                                         value={inputFirstStep.hour || ''}
                                         onChange={handleFirstStepChange}
                                     >
-                                        {timeOptions.map((time, index) => (
-                                            <MenuItem key={index} value={time}>
-                                                {time}:00
+                                        {hourOptions.map((hour, index) => (
+                                            <MenuItem key={index} value={hour}>
+                                                {(hour > getCurrentHour()) && `${hour}:00`}
                                             </MenuItem>
                                         ))}
                                     </TextField>
@@ -195,31 +209,25 @@ const ReserveForm = () => {
             	<Step key={2}>
                     <StepLabel><b>Checking available tables</b></StepLabel>
                     <StepContent>
-                        <Typography>
-                            {/* <Box sx={{ width: '50%' }}>
-                                <Stack spacing={2}>
-                                    <div>First Name</div>
-                                    <div>Last Name</div>
-                                    <div>Phone Number</div>
-                                    <div>Credit Card</div>
-                                </Stack>
-                            </Box> */}
-                        </Typography>
-                        <div className='mt-3'>
-                            <Button
-                                disabled={activeStep === 0}
-                                onClick={handleBack}
-                            >
-                                Back
-                            </Button>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={handleNext}
-                            >
-                                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                            </Button>
-                        </div>
+                        <Box sx={{ width: '20%' }} style={{ margin: 'auto 40%' }}>
+                            <h5>We got {tableList.length} available tables</h5>
+                            <div className='mt-3 d-flex justify-content-around'>
+                                <Button
+                                    disabled={activeStep === 0}
+                                    onClick={handleBack}
+                                >
+                                    Back
+                                </Button>
+                                <Button
+                                    type='submit'
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={handleNext}
+                                >
+                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                                </Button>
+                            </div>
+                        </Box>
                     </StepContent>
                 </Step>
             	<Step key={3}>
