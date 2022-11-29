@@ -93,7 +93,9 @@ const LoginForm = () => {
             window.location.reload(true);
           }
           else {
+            alert('Successfully registered!');
             navigate('/login')
+            window.location.reload(true);
             // console.log('Successfully registered');
           }
         }
