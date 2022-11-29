@@ -41,6 +41,10 @@ const getCurrentHour = () => {
     let today = new Date();
     return today.getHours();
 }
+const getCurrentDate = () => {
+    let today = new Date();
+    return `${today.getFullYear()}${today.getMonth()}${today.getDate()}`;
+}
 
 const ReserveForm = () => {
 
@@ -165,7 +169,10 @@ const ReserveForm = () => {
                                     >
                                         {hourOptions.map((hour, index) => (
                                             <MenuItem key={index} value={hour}>
-                                                {(hour > getCurrentHour()) && `${hour}:00`}
+                                                {(`${date.$y}${date.$M}${date.$D}` === getCurrentDate())
+                                                    ? (hour > getCurrentHour() && `${hour}:00`)
+                                                    : `${hour}:00` 
+                                                }
                                             </MenuItem>
                                         ))}
                                     </TextField>
