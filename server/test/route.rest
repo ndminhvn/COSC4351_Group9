@@ -45,11 +45,11 @@ POST http://localhost:8000/reservation/availability
 Content-Type: application/json
 
 {
-    "year": "2025",
-    "month": "6",
-    "day": "29",
+    "year": "2023",
+    "month": "7",
+    "day": "5",
     "hour": "10",
-    "partySize": 10
+    "partySize": 1
 }
 
 ###
@@ -59,9 +59,9 @@ POST http://localhost:8000/reservation/confirm
 Content-Type: application/json
 
 {
-    "year": "2022",
-    "month": "12",
-    "day": "3",
+    "year": "2023",
+    "month": "7",
+    "day": "5",
     "hour": "10",
     "firstName": "Quang",
     "lastName": "Du",
@@ -72,17 +72,10 @@ Content-Type: application/json
 
     "table_arr": [
   {
-    "name": "Table 8",
-    "capacity": 6,
+    "name": "Table 1",
+    "capacity": 2,
     "isAvailable": true,
-    "_id": "6385740425b8f75d6b71d08d",
-    "__v": 0
-  },
-  {
-    "name": "Table 5",
-    "capacity": 4,
-    "isAvailable": true,
-    "_id": "6385740425b8f75d6b71d087",
+    "_id": "6385740425b8f75d6b71d07f",
     "__v": 0
   }
 ]

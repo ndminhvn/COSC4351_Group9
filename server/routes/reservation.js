@@ -46,18 +46,19 @@ router.post("/confirm", async (req, res) => {
     for (let table of day.tables) {
       for (let availableTable of table_arr){
           if (table.name == availableTable.name){
-              console.log("Booked table: ",availableTable.name)
+              console.log("Reserved ",availableTable.name, "on: ", dateTime)
               table.isAvailable = false
               table.reservation = reservation
           }
       }
     }
+    await day.save();
+    await reservation.save()
+
     let fee_msg = ""
     if(isHighTrafficDay(dateTime)){
       fee_msg = "Due to weekends/holidays, your card will be charge a holding fee of $10"
     }
-    await day.save()
-    await reservation.save()
     res.status(200).send("Successfully booked.\n" + fee_msg)
   } catch (error) {
     res.status(500).send("Error occured while confirming guest reservation")
@@ -98,6 +99,7 @@ router.post("/availability", async (req, res) => {
         tables: allTables
       })
       await day.save()
+      console.log("First reservion for instance: ", dateTime)
       const selectedTable = await pickTable(allTables, partySize)
       res.status(200).send(selectedTable)
     }
