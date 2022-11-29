@@ -51,9 +51,7 @@ const userSchema = new mongoose.Schema({
         cvv: {
             type: String,
             default: "000"
-        }
-            
-        
+        }                 
     }
 
 });
