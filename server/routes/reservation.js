@@ -53,17 +53,14 @@ router.post("/confirm", async (req, res) => {
         }
       }
     }
-    //console.log(day)
-    
+
     await day.save()
     await reservation.save()
 
-
-    let fee_msg = ""
-    if (isHighTrafficDay(dateTime)) {
-      fee_msg = "Due to weekends/holidays, your card will be charge a holding fee of $10"
+    if (isHighTrafficDay(dateTime)){
+      return res.status(200).send("Reservation falls within weekend/holiday. $10 holding fee applied")
     }
-    res.status(200).send("Successfully booked.\n" + fee_msg)
+    return res.status(200).send("Confirmed Booking")
   } catch (error) {
     res.status(500).send("Error occured while confirming guest reservation")
   }
