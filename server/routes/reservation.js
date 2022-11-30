@@ -115,7 +115,6 @@ router.post("/availability", async (req, res) => {
 
 function pickTable(tables, partySize) {
   try {
-    let msg = "";
     let singleTable = []
     //case 1: reserve only one table
     for (let table of tables) {
@@ -124,8 +123,6 @@ function pickTable(tables, partySize) {
         return singleTable
       }
     }
-    msg += `No single table available for party size of ${partySize}, so we have to combine tables. \n`;
-
     //case 2: reserve more than 1 table
     let combinedTables = []
     tables.sort((a, b) => b.capacity - a.capacity); // sort table size in descending order [6,6,6,4,4,4,2,2]
@@ -144,8 +141,7 @@ function pickTable(tables, partySize) {
         }
       }
     }
-    msg += "Not enough tables for this party size."
-    return msg
+    return []
   } catch (error) { res.status(500).send("Error during combining table") }
 
 }
