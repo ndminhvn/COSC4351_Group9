@@ -1,38 +1,34 @@
-// https://www.officeholidays.com/countries/usa/2023 
+/*
+Input: an Date object
+Output: return true if day falls within Saturday, Sunday or a holiday.
+Holiday dates: https://www.officeholidays.com/countries/usa/2023
+*/
 
-function isHighTraffic(day){
-    const holidays = {
-        "2022-12-25": "Christmas Day", 
-        "2023-01-01": "New Year Day", 
-        "2023-05-29": "Memorial Day", 
-        "2023-07-04": "July 4th",
-        "2023-09-04": "Labor Day", 
-        "2023-11-10": "Veterans Day", 
-        "2023-11-23": "Thanksgiving Day", 
-        "2023-12-25": "Christmas Day"}
-      
-    dateString = day.getFullYear() + '-' + (day.getMonth()+1) + '-' + day.getDate()
+function isHighTraffic(dayObj){
 
-    if (dateString in holidays) {
+    day = dayObj.toDateString()
+
+    holidays = [
+        new Date(2023,11,25).toDateString(), //Christmas
+        new Date(2023,10,23).toDateString(), //Thanksgiving
+        new Date(2023,10,10).toDateString(), //Veteran day
+        new Date(2023,8,4).toDateString(),   //Labor Day
+        new Date(2023,6,4).toDateString(),   //July 4th
+        new Date(2023,4,29).toDateString(),  //Memorial Day
+        new Date(2023,0,1).toDateString(),   //New year
+        new Date(2022,11,25).toDateString()  //Christmas
+    ]
+
+    //check holiday
+    if (holidays.includes(day)) {
         return true
     }
-    
-    let dayOfWeek = day.getDay()
-    
-    //modify dayOfWeek to match with local time
-    if (dayOfWeek == 6) {
-        dayOfWeek = 0;
-    } else {
-        dayOfWeek += 1;
-    }
 
-    // check if day is a weekend
-    if ((dayOfWeek === 6) || (dayOfWeek  === 0)) return true
+    //check weekend
+    if(day.substring(0,3) == 'Sat' || day.substring(0,3) == 'Sun') return true 
 
-    // day is neither holiday nor weekend
+    //weekday
     return false 
 }
-
-//console.log(isHighTraffic(new Date(2022,11,25,12)))
 
 module.exports = isHighTraffic
