@@ -25,6 +25,8 @@ import * as Yup from 'yup';
 import 'yup-phone';
 import axios from 'axios';
 
+import { TableCap2, TableCap4, TableCap6 } from '../TableImages';
+
 import './ReserveForm.css';
 
 const steps = [
@@ -41,20 +43,60 @@ const getCurrentHour = () => {
     let today = new Date();
     return today.getHours();
 }
+
 const getCurrentDate = () => {
     let today = new Date();
     return `${today.getFullYear()}${today.getMonth()}${today.getDate()}`;
 }
 
+// render tables in step 2
+const tableRender = (capacity, name, index) => {
+    if (capacity === 2) {
+        return (
+            <div key={index}>
+                <img 
+                    src={TableCap2}
+                    alt='tableImg'
+                    style={{height: '150px', width: 'auto'}}
+                />
+                <p className='text-center'>{name}</p>
+            </div>
+        )
+    }
+    if (capacity === 4) {
+        return (
+            <div key={index}>
+                <img 
+                    src={TableCap4}
+                    alt='tableImg'
+                    style={{height: '150px', width: 'auto'}}
+                />
+                <p className='text-center'>{name}</p>
+            </div>
+        )
+    }
+    if (capacity === 6) {
+        return (
+            <div key={index}>
+                <img 
+                    src={TableCap6}
+                    alt='tableImg'
+                    style={{height: '150px', width: 'auto'}}
+                />
+                <p className='text-center'>{name}</p>
+            </div>
+        )
+    }
+}
+
 const ReserveForm = () => {
 
     const [activeStep, setActiveStep] = useState(0);
-    // const [completed, setCompleted] = useState({});
     
     const [inputFirstStep, setInputFirstStep] = useState({});   // contain time and num of guests from input
-    const [date, setDate] = useState({});               // date value from date picker
+    const [date, setDate] = useState({});                       // date value from date picker
 
-    const [tableList, setTableList] = useState([]);
+    const [tableList, setTableList] = useState([]);             // available tables list from api
 
     // filter out only necessary fields from date
     const handleDateBeforeSubmit = (date) => {
@@ -91,7 +133,7 @@ const ReserveForm = () => {
         // console.log(JSON.stringify(data, null, 2));
         await axios.post('http://localhost:8000/reservation/availability', data)
         .then(res => {
-            // console.log(res.data);
+            console.log(res.data);
             // save res.data to tableList
             setTableList(res.data);
             // go to next step
@@ -216,8 +258,15 @@ const ReserveForm = () => {
             	<Step key={2}>
                     <StepLabel><b>Checking available tables</b></StepLabel>
                     <StepContent>
-                        <Box sx={{ width: '20%' }} style={{ margin: 'auto 40%' }}>
-                            <h5>We got {tableList.length} available tables</h5>
+                        <Box sx={{ width: '33.3%' }} style={{ margin: 'auto 33.3%' }}>
+                            <h4 className='text-center mb-3'>
+                                Here is what we found for you!
+                            </h4>
+                            <div className='mt-2 d-flex justify-content-around'>
+                                {tableList.map((table, index) => (
+                                    tableRender(table.capacity, table.name, index)
+                                ))}
+                            </div>
                             <div className='mt-3 d-flex justify-content-around'>
                                 <Button
                                     disabled={activeStep === 0}
@@ -240,31 +289,29 @@ const ReserveForm = () => {
             	<Step key={3}>
                     <StepLabel><b>Finish your reservation</b></StepLabel>
                     <StepContent>
-                    <Typography>
-                            <Box sx={{ width: '50%' }}>
-                                <Stack spacing={2}>
-                                    <div>First Name</div>
-                                    <div>Last Name</div>
-                                    <div>Phone Number</div>
-                                    <div>Credit Card</div>
-                                </Stack>
-                            </Box>
-                        </Typography>
-                        <div className='mt-3'>
-                            <Button
-                                disabled={activeStep === 0}
-                                onClick={handleBack}
-                            >
-                                Back
-                            </Button>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={handleNext}
-                            >
-                                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                            </Button>
-                        </div>
+                        <Box sx={{ width: '50%' }}>
+                            <Stack spacing={2}>
+                                <div>First Name</div>
+                                <div>Last Name</div>
+                                <div>Phone Number</div>
+                                <div>Credit Card</div>
+                            </Stack>
+                            <div className='mt-3'>
+                                <Button
+                                    disabled={activeStep === 0}
+                                    onClick={handleBack}
+                                >
+                                    Back
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={handleNext}
+                                >
+                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                                </Button>
+                            </div>
+                        </Box>
                     </StepContent>
                 </Step>
             </Stepper>
