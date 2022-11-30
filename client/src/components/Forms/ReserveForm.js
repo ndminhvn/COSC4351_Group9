@@ -35,9 +35,9 @@ const steps = [
     'Finish the reservation'
 ];
 
-const guestOptions = [1,2,3,4,5,6,7,8,9,10];
+const guestOptions = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 
-const hourOptions = [11,12,13,14,15,16,17,18,19,20];
+const hourOptions = [10,11,12,13,14,15,16,17,18,19,20];
 
 const getCurrentHour = () => {
     let today = new Date();
@@ -133,7 +133,7 @@ const ReserveForm = () => {
         // console.log(JSON.stringify(data, null, 2));
         await axios.post('http://localhost:8000/reservation/availability', data)
         .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             // save res.data to tableList
             setTableList(res.data);
             // go to next step
@@ -259,30 +259,58 @@ const ReserveForm = () => {
                     <StepLabel><b>Checking available tables</b></StepLabel>
                     <StepContent>
                         <Box sx={{ width: '33.3%' }} style={{ margin: 'auto 33.3%' }}>
-                            <h4 className='text-center mb-3'>
-                                Here is what we found for you!
-                            </h4>
-                            <div className='mt-2 d-flex justify-content-around'>
-                                {tableList.map((table, index) => (
-                                    tableRender(table.capacity, table.name, index)
-                                ))}
-                            </div>
-                            <div className='mt-3 d-flex justify-content-around'>
-                                <Button
-                                    disabled={activeStep === 0}
-                                    onClick={handleBack}
-                                >
-                                    Back
-                                </Button>
-                                <Button
-                                    type='submit'
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={handleNext}
-                                >
-                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                                </Button>
-                            </div>
+                            {(tableList.length !== 0) ? 
+                                <>
+                                    <h4 className='text-center mb-3'>
+                                        Here is what we found for you!
+                                    </h4>
+                                    <div className='mt-2 d-flex justify-content-around'>
+                                        {tableList.map((table, index) => (
+                                            tableRender(table.capacity, table.name, index)
+                                        ))}
+                                    </div>
+                                    <div className='mt-3 d-flex justify-content-around'>
+                                        <Button
+                                            disabled={activeStep === 0}
+                                            onClick={handleBack}
+                                        >
+                                            Back
+                                        </Button>
+                                        <Button
+                                            type='submit'
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={handleNext}
+                                        >
+                                            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                                        </Button>
+                                    </div>
+                                </>
+                            : 
+                            <>
+                                <h4 className='text-center'>
+                                We sincerely apologize. There are no tables available that match your preferences. Please try again!
+                                </h4>
+                                <div className='mt-3 d-flex justify-content-around'>
+                                    <Button
+                                    	variant='contained'
+                                        disabled={activeStep === 0}
+                                        onClick={handleBack}
+                                    >
+                                        Back
+                                    </Button>
+                                    <Button
+                                        disabled
+                                        type='submit'
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={handleNext}
+                                    >
+                                        {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                                    </Button>
+                                </div>
+                            </>
+                            }
                         </Box>
                     </StepContent>
                 </Step>
