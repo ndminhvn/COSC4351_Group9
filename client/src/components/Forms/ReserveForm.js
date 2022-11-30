@@ -196,10 +196,11 @@ const ReserveForm = () => {
         event.preventDefault();
         const datePrepare = handleDateBeforeSubmit(date);
         const dateReady = changeKeyNameInDateBeforeSubmit(datePrepare);
-        data = Object.assign(inputLastStep, dateReady);
-        data.phoneNumber = phoneNumber;
-        data.table_arr = tableList;
-        console.log(JSON.stringify(data, null, 2));
+        data = Object.assign(inputFirstStep, dateReady);                // add fields from the first step inputs
+        data = Object.assign(inputLastStep, inputFirstStep);            // add fields from 2 steps together
+        data.phoneNumber = phoneNumber;                                 // add phone field
+        data.table_arr = tableList;                                     // add table list
+        // console.log(JSON.stringify(data, null, 2));
         // handleNext();
         await axios.post('http://localhost:8000/reservation/confirm', data)
         .then(res => {
