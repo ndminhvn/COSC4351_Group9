@@ -21,6 +21,7 @@ import axios from 'axios';
 
 import { getToken } from '../../useToken.js';
 import { TableCap2, TableCap4, TableCap6 } from '../TableImages';
+import PromptRegisterModal from '../Modal/PromptRegisterModal';
 
 import './ReserveForm.css';
 
@@ -352,6 +353,7 @@ const ReserveForm = () => {
                 </Step>
             	<Step key={3}>
                     <StepLabel><b>Finish your reservation</b></StepLabel>
+                    {(!token) && (<PromptRegisterModal openValue={true} />)}
                     <StepContent>
                         <Box sx={{ width: '33.3%' }} style={{ margin: 'auto 33.3%' }}>
                             <form onSubmit={handleFinalSubmit}>
