@@ -10,6 +10,7 @@ import {
     StepContent,
     MenuItem,
     Grid,
+    Link,
     Typography
 } from '@mui/material';
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
@@ -476,15 +477,15 @@ const ReserveForm = () => {
                                 </Button>
                             </Grid>
                             <Grid item xs={6}>
-                                <Button 
-                                    fullWidth
-                                    variant='contained' 
-                                    color='primary' 
-                                    // size='lg'
-                                    href='/'
-                                >
-                                    Back to Home Page
-                                </Button>
+                                <Link href='/' underline='none'>
+                                    <Button 
+                                        fullWidth
+                                        variant='contained' 
+                                        color='primary' 
+                                    >
+                                        Back to Home Page
+                                    </Button>
+                                </Link>
                             </Grid>
                         </Grid>
                     </div>
