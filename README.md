@@ -49,7 +49,7 @@ A reservation system for a restaurant.
     1. Regular day booking, has tables
     2. Regular day booking, full tables
     3. Holiday booking, has tables
-  - Guest reservation
+  - Registered user
     - Autofill feature
   - Registration
   - Login
