@@ -52,8 +52,8 @@ const User = () => {
     // console.log(JSON.stringify(data, null, 2));
     await axios.put(`http://localhost:8000/user/details/${token}`, data)
     .then(res => {
-      alert(`${res.data}. Redirect back to home page`);
-      navigate('/');
+      alert(`${res.data}`);
+      // navigate('/');
       window.location.reload(true);
     })
     .catch(error => {
@@ -150,7 +150,7 @@ const User = () => {
                     required
                     label='Mailing Address'
                     name='mailingAddress'
-                    value={input.mailingAddress ||''}
+                    value={(input.mailingAddress || '') || ((userData.mailingAddress) ? userData.mailingAddress : '')}
                     onChange={handleFormChange}
                     // margin='normal'
                   />
@@ -172,7 +172,7 @@ const User = () => {
                     required
                     label='Billing Address'
                     name='billingAddress'
-                    value={((checked) ? (input.mailingAddress) : (input.billingAddress)) || ''}
+                    value={((checked) ? (input.mailingAddress) : (input.billingAddress || '')) || ''}
                     onChange={handleFormChange}
                     // margin='normal'
                   />
