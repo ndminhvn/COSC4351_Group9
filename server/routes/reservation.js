@@ -26,7 +26,7 @@ router.post("/confirm", async (req, res) => {
   let y = parseInt(req.body.year)
   let m = parseInt(req.body.month) - 1
   let d = parseInt(req.body.day)
-  let h = parseInt(req.body.hour) - 5
+  let h = parseInt(req.body.hour) - 6
   const dateTime = new Date(y, m, d, h)
 
   // create reservation
@@ -43,7 +43,7 @@ router.post("/confirm", async (req, res) => {
   })
 
   try {
-    var day = await Day.findOne({ dateTime })
+    var day = await Day.findOne({ date: dateTime })
     for (let table of day.tables) {
       for (let availableTable of table_arr) {
         if (table.name == availableTable.name) {
@@ -85,7 +85,7 @@ router.post("/availability", async (req, res) => {
     let y = parseInt(req.body.year)
     let m = parseInt(req.body.month) - 1
     let d = parseInt(req.body.day)
-    let h = parseInt(req.body.hour) - 5
+    let h = parseInt(req.body.hour) - 6
     const dateTime = new Date(y, m, d, h)
     const partySize = parseInt(req.body.partySize)
     //console.log("Time enter: ", dateTime)
