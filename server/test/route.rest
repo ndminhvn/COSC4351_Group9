@@ -1,13 +1,106 @@
-GET http://localhost:3000/login
+
+GET http://localhost:8000/user/login
 
 ###
 
-POST http://localhost:3000/register
+POST http://localhost:8000/user/register/
 Content-Type: application/json
 
 {
-    "FirstName": "Tom",
-    "LastName": "Jerry",
-    "PhoneNumber": "1234",
-    "Password": "xxb" 
+    "firstName": "Bob",
+    "lastName": "Burger",
+    "phoneRegister": "+1 234 566 7777",
+    "passwordRegister": "pass123"
+
 }
+
+###
+POST   http://localhost:8000/user/login
+Content-Type: application/json
+
+{
+    "phoneLogin": "+1 234 566 7777",
+    "passwordLogin": "pass123"
+}
+
+###
+GET http://localhost:8000/user/details/+1%20234%20566%207777
+
+###
+
+PUT  http://localhost:8000/user/details/+1%20234%20566%207777
+Content-Type: application/json
+
+{
+    "mailingAddress": "Houston",
+    "billingAddress": "Newyork",
+    "preferDiner": 6,
+    "preferPayment": "Check",
+    "cvv": 999
+}
+
+###
+
+POST http://localhost:8000/reservation/availability
+Content-Type: application/json
+
+{
+    "year": "2023",
+    "month": "7",
+    "day": "20",
+    "hour": "10",
+    "partySize": 20
+}
+
+###
+
+//reservation
+POST http://localhost:8000/reservation/confirm
+Content-Type: application/json
+
+{
+    "year": "2023",
+    "month": "7",
+    "day": "20",
+    "hour": "10",
+    "firstName": "Quang",
+    "lastName": "Du",
+    "phoneNumber": "45643231",
+    "cardNumber": "2222 2222 2222",
+    "expDate": "2222",
+    "cvv":"222",
+
+    "table_arr": [
+  {
+    "name": "Table 6",
+    "capacity": 6,
+    "isAvailable": true,
+    "_id": "6385740425b8f75d6b71d089",
+    "__v": 0
+  },
+  {
+    "name": "Table 7",
+    "capacity": 6,
+    "isAvailable": true,
+    "_id": "6385740425b8f75d6b71d08b",
+    "__v": 0
+  },
+  {
+    "name": "Table 8",
+    "capacity": 6,
+    "isAvailable": true,
+    "_id": "6385740425b8f75d6b71d08d",
+    "__v": 0
+  },
+  {
+    "name": "Table 2",
+    "capacity": 2,
+    "isAvailable": true,
+    "_id": "6385740425b8f75d6b71d081",
+    "__v": 0
+  }
+]
+}
+
+###
+GET http://localhost:8000/reservation/confirm/+1%20234%20566%207777

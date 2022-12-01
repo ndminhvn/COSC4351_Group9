@@ -30,8 +30,9 @@ A reservation system for a restaurant.
 - Install:
   - Clone this repository: `git clone https://github.com/ndminhvn/COSC4351_Group9`
   - Frontend:
-    <!-- - Go to client folder: `cd client`
-    - Install dependencies: `npm install` -->
+    - Go to client folder: `cd client`
+    - Install dependencies: `npm install`
+    - Start server: `npm start`
   - Backend:
     - Go to server folder: `cd server`
     - Install dependencies: `npm install`
@@ -54,6 +55,4 @@ A reservation system for a restaurant.
   - Registration
   - Login
   - Update profile
-
-
 
