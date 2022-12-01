@@ -1,8 +1,8 @@
 # UH-Fall2022 COSC4351: Fundamentals of Software Engineering
 ## Team 9 Members
-- Quang Du
-- Han Hoang
-- Minh Nguyen
+- Quang Du : Backend, API, Unit Testing
+- Han Hoang: Database Schema, Combine tables and special days tracking algorithm.
+- Minh Nguyen: Frontend, input validation, Git workflows
 
 # <p align="center"> Restaurant Reservation System </p>
 <!-- ## <p align="center"> [LIVE WEB APP] </p> -->
@@ -17,6 +17,7 @@ A reservation system for a restaurant.
 - Libraries:
   - Styling: [Bootstrap](https://github.com/twbs/bootstrap)
   - Request: [Axios](https://github.com/axios/axios)
+  - Unit Testing: [Jest](https://jestjs.io/)
 
 ## Demo
 ## Installation
@@ -37,3 +38,22 @@ A reservation system for a restaurant.
     - Start server: `npm run server`
 
 ## Project Structure
+- Restaurant tables layout:
+   - Table size 2 (qty:2)
+   - Table size 4 (qty:3)
+   - Table size 6 (qty:4)
+   
+   Max capacity of restaurant is 40 people
+- Scenarios
+  - Guest reservation (prompt to register)
+    1. Regular day booking, has tables
+    2. Regular day booking, full tables
+    3. Holiday booking, has tables
+  - Guest reservation
+    - Autofill feature
+  - Registration
+  - Login
+  - Update profile
+
+
+
