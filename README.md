@@ -20,6 +20,7 @@ A reservation system for a restaurant.
   - Unit Testing: [Jest](https://jestjs.io/)
 
 ## Demo
+- Walk-through video: https://youtu.be/0wJf-DrdXxQ
 ## Installation
 - Requirements:
   - Git
